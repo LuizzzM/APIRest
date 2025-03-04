@@ -9,6 +9,8 @@ A aplicação consiste em mural público de imagens, onde qualquer usuário pode
  - Node.js
  - Express
  - Uploadcare
+ - HTML
+ - CSS
 
 ## Referências
 - https://uploadcare.com/docs/api
