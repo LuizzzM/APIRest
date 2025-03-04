@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap');
+
+body {
+  font-family: 'Arial', sans-serif;
+  text-align: center;
+  margin: 20px;
+  background-color: #b30000; /* Vermelho intenso */
+  color: #333;
+}
+
+h1 {
+  font-family: 'UnifrakturMaguntia', cursive;
+  font-size: 4rem; /* Aumentado o tamanho */
+  font-weight: bold;
+  color: #FFD700; /* Amarelo dourado */
+  text-align: center;
+}
+
+h2, h3 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  color: #000000;
+}
+
+#gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+  background-color: #FFD700; /* Amarelo dourado */
+  padding: 20px;
+  border-radius: 12px;
+}
+
+img {
+  width: 300px;
+  height: auto;
+  margin: 10px;
+  border-radius: 12px;
+  box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2);
+}

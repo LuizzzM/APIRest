@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Uploadcare File Uploader</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@uploadcare/file-uploader@1/web/uc-file-uploader-regular.min.css">
+</head>
+<body>
+
+  <h1>Mural</h1>
+
+  <uc-config ctx-name="my-uploader" source-list="local, camera, facebook, gdrive" camera-modes="photo, video"
+    pubkey="58e4de85ed21217913e4"></uc-config>
+
+  <uc-file-uploader-regular ctx-name="my-uploader" class="uc-light"></uc-file-uploader-regular>
+
+  <h2>Imagens Armazenadas:</h2>
+  <h4>Poste uma imagem e recarregue a página</h4>
+  <div id="gallery"></div>
+
+  <script type="module" src="js/script.js"></script>
+</body>
+</html>
