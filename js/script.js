@@ -3,13 +3,10 @@ UC.defineComponents(UC);
 
 async function fetchImages() {
   try {
-    // URL atualizada para uma rota relativa
     const response = await fetch("/api/get-images");
     if (!response.ok) throw new Error(`Erro HTTP: ${response.status}`);
 
     const fileList = await response.json();
-    console.log("🔍 Dados recebidos:", fileList);
-
     const gallery = document.getElementById("gallery");
     gallery.innerHTML = "";
 
@@ -26,19 +23,35 @@ async function fetchImages() {
         img.style.maxWidth = "300px";
 
         img.onerror = function () {
-          console.error(`❌ Erro ao carregar: ${file.original_file_url}`);
           img.style.display = "none";
         };
 
         gallery.appendChild(img);
-      } else {
-        console.warn("⚠️ Arquivo ignorado:", file);
       }
     });
-
   } catch (error) {
-    console.error("❌ Erro ao buscar imagens:", error);
+    console.error("Erro ao buscar imagens:", error);
   }
 }
 
-document.addEventListener("DOMContentLoaded", fetchImages);
+document.addEventListener("DOMContentLoaded", () => {
+  fetchImages();
+
+  const uploader = document.querySelector("uc-file-uploader-regular");
+  uploader.addEventListener("uploadComplete", async (event) => {
+    const fileUUID = event.detail.uuid;
+    try {
+      const response = await fetch("/api/get-images", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ file: fileUUID })
+      });
+      if (!response.ok) throw new Error(`Erro HTTP: ${response.status}`);
+      fetchImages();
+    } catch (error) {
+      console.error("Erro ao enviar arquivo para armazenamento:", error);
+    }
+  });
+});
